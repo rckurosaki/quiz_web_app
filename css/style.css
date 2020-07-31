@@ -99,17 +99,22 @@ figure img{
 	/*padding: 40px 58px 0px 0px;*/
 }
 
-#buttons{
+#content{
 	grid-column: 2;
 	grid-row: 2;
-	min-width: 1em;
-	
+
+	height: auto;
+	width: auto;
+
+
+}
+
+#buttons{
 	height: auto;
 
 	margin: auto;
 
 	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-
 
 	/*Center the blocks inside the main div*/
 	display: flex;
@@ -118,9 +123,6 @@ figure img{
 	flex-flow: wrap;
 
 	overflow: auto;
-
-	/*display: none; */
-	
 }
 
 #esquerda{
