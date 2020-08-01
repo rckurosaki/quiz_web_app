@@ -3,60 +3,60 @@ var array_user_answers = [];
 
 
 $('.choice').on('click', function(){
-	get_quiz($(this).attr('id'));
+	get_quiz_api($(this).attr('id'));
 	
 });
 
-function get_quiz(id){
+function get_quiz_api(id){
 	
 	let api_url = "https://opentdb.com/api.php?amount=10&category=";
 
 	if(id === 'music'){
-		full_url = api_url + '12&type=multiple&encode=url3986';
-
+		api_url += '12';
 	}	
 	else if(id === 'film'){
-		full_url = api_url + '11&type=multiple&encode=url3986';
+		api_url += '11';
 	}
 	else if(id === 'games'){
-		full_url = api_url + '15&type=multiple&encode=url3986';
+		api_url += '15';
 	}
 	else if(id === 'science'){
-		full_url = api_url + '17&type=multiple&encode=url3986';
+		api_url += '17';
 	}
 	else if(id === 'anime'){
-		full_url = api_url + '31&type=multiple&encode=url3986';
+		api_url += '31';
 	}
 	else if(id === 'history'){
-		full_url = api_url + '23&type=multiple&encode=url3986';
+		api_url +='23';
 	}
 	else if(id === 'celebrities'){
-		full_url = api_url + '26&type=multiple&encode=url3986';
+		api_url += '26';
 	}
 	else if(id === 'sports'){
-		full_url = api_url + '21&type=multiple&encode=url3986';
+		api_url += '21';
 	}
 	
+	api_url += '&type=multiple&encode=url3986';
 
-
-	set_quiz(full_url);
+	prepare_quiz(api_url);
 }
 
 
-function set_quiz(full_url){
+function prepare_quiz(full_url){
 	$('#buttons').empty();
+
+	run_loading_animation();
 
 
 	const api_request = new XMLHttpRequest();
 	api_request.open('POST', full_url);
 
-	//var array_user_answers = [];
 
 	api_request.onload = function(){
 		var questions = JSON.parse(api_request.responseText);
 		
-
-		theQuiz(questions);
+		remove_loading_animation();
+		run_quiz(questions);
 		
 		
 	};
@@ -65,9 +65,9 @@ function set_quiz(full_url){
 }
 
 
-function theQuiz(quest){
+function run_quiz(quest){
 	if(nro < 10){
-		var q = decodeURIComponent(quest.results[nro].question);
+		var question_title = decodeURIComponent(quest.results[nro].question);
 		var options = [decodeURIComponent(quest.results[nro].correct_answer), 
 						decodeURIComponent(quest.results[nro].incorrect_answers[0]),
 						decodeURIComponent(quest.results[nro].incorrect_answers[1]),
@@ -81,7 +81,7 @@ function theQuiz(quest){
 			options[j] = temp;
 		}
 
-		renderTemplate(q, options);
+		render_question_template(question_title, options);
 	}
 
 
@@ -91,7 +91,7 @@ function theQuiz(quest){
 		nro++;
 
 		if(nro < 10){
-			theQuiz(quest);
+			run_quiz(quest);
 		}
 		else{
 
@@ -192,7 +192,7 @@ function renderMainMenu(){
 		document.getElementById('content').innerHTML = newContent;
 
 		$('.choice').on('click', function(){
-			get_quiz($(this).attr('id'));
+			get_quiz_api($(this).attr('id'));
 	
 		});
 				
@@ -200,8 +200,8 @@ function renderMainMenu(){
 
 function calcResults(quest){
 	var correct = 0;
-
 	for(var i = 0; i < 10; i++){
+		
 		if(array_user_answers[i] == decodeURIComponent(quest.results[i].correct_answer)){
 			correct++;
 		}
@@ -211,13 +211,13 @@ function calcResults(quest){
 }
 
 
-function renderTemplate(theQuestion, options){
+function render_question_template(theQuestion, options){
 	var newContent = '<div id="quiz_question">';
-	newContent += '<h2 id="question">' + theQuestion + '</h2>';
-	newContent += '<button id="0" class="answer_button">' + options[0] + '</button><br>';
-	newContent += '<button id="1" class="answer_button">' + options[1] + '</button><br>';
-	newContent += '<button id="2" class="answer_button">' + options[2] + '</button><br>';
-	newContent += '<button id="3" class="answer_button">' + options[3] + '</button> </div>';
+	newContent += `<h2 id="question"> ${theQuestion} </h2>`;
+	newContent += `<button id="0" class="answer_button">${options[0]}</button><br>`;
+	newContent += `<button id="1" class="answer_button">${options[1]}</button><br>`;
+	newContent += `<button id="2" class="answer_button">${options[2]}</button><br>`;
+	newContent += `<button id="3" class="answer_button">${options[3]}</button> </div>`;
 
 
 	if($('#quiz_question').length){
@@ -228,3 +228,11 @@ function renderTemplate(theQuestion, options){
 
 }
 
+function run_loading_animation(){
+	//Make a load animation
+	document.getElementById('content').innerHTML = '<div class="loading_box"><div class="loader"></div></div>';
+}
+
+function remove_loading_animation(){
+	$('.loading_box').empty();
+}
