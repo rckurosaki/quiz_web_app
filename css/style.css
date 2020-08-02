@@ -143,12 +143,18 @@ figure img{
 
 /*h2 tag id from the question*/
 #question{
+
+	min-height: 80px;
+	width: 80%;
+
+	margin-left: auto;
+	margin-right: auto;
+
+	padding: 6px;
+	
 	display: flex;
 	align-items: center;
 	justify-content: center;
-
-	min-height: 80px;
-	
 
 	background-color: #C7D6DD;
 	box-shadow: 1px 1px 4px #2E424A;
@@ -164,6 +170,8 @@ figure img{
 #quiz_question{
 	text-align: center;
 	overflow: auto;
+
+	display: center;
 
 	padding-bottom: 40px;
 }
@@ -282,6 +290,8 @@ figure img{
 	margin-top: -10px;
 	text-align: center;
 	background-color: #E1E1EB;
+	justify-content: center;
+	align-items: center;
 
 }
 
@@ -290,6 +300,8 @@ figure img{
 	font-family: Arial, Helvetica, sans-serif;
 
 	text-align: center;
+	justify-content: center;
+	align-items: center;
 
 	margin-top: 20px;
 }
@@ -302,13 +314,15 @@ figure img{
 	justify-content: center;
 	align-items: center;
 
+	text-align: center;
+
 
 }
 
 #animation_gif>img{
 
-	min-height: 500px;
-	min-width: 500px;
+	width: 70%;
+	height: auto;
 
 	
 	justify-content: center;
@@ -346,6 +360,9 @@ figure img{
 
 	border-radius: 30px;
 
+	margin-left: 5px;
+
+
 }
 
 #play_again:hover{
@@ -359,6 +376,53 @@ figure img{
 }
 
 #play_again:active {
+	background-color: #C7D6DD;
+	border: solid 1px #C7D6DD;
+
+	box-shadow: 0 5px #030a0c;
+	transform: translateY(4px);
+	color: black;
+
+	font-weight: bold;
+
+}
+
+
+#show_answers{
+
+	width: 400px;
+	height: 70px;
+
+	margin: 0 auto;
+	margin-bottom: 20px;
+	margin-top: 10px;
+
+	font-size: 25px;
+
+	box-shadow: 5px 5px 15px #030a0c;
+
+	background-color: #A2BCC6;
+	border: solid 1px #A2BCC6;
+
+	border-radius: 30px;
+
+	float: right;
+	margin-right: 20px;
+
+
+}
+
+#show_answers:hover{
+	background-color: #04D8B5;
+  	border: solid 1px #04D8B5;
+
+  	color: black;
+  	font-weight: bold;
+
+  	box-shadow: 5px 5px 15px #030a0c;
+}
+
+#show_answers:active {
 	background-color: #C7D6DD;
 	border: solid 1px #C7D6DD;
 
@@ -399,12 +463,46 @@ figure img{
 }
 
 
+/*Responsive behavior*/
+
 @media all and (max-width: 60em){
 	body{ display: block; }
 }
 
 @media only screen and (min-device-width: 360px) and (max-device-width: 992px){
+	#question{
+		width: 320px;
+
+		margin-left: auto;
+		margin-right: auto;
+	}
+
 	.answer_button{
 		width: 320px;
 	}
+
+	#play_again{
+		width: 320px;
+	}
+
+	#show_answers{
+		width: 320px;
+	}
+
+	#animation_gif{
+		width: 280px;
+		height: auto;
+	}
+
+	img.feedback_gif{
+
+		width: 50%;
+		height: auto;
+		
+	}
+
+	#score_buttons{
+		display: block;
+	}
+
 }

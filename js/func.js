@@ -102,7 +102,7 @@ function run_quiz(quest){
 			$('#quiz_question').empty();
 
 			//show the score screen
-			scoreScreen(nCorrect);
+			score_screen(nCorrect);
 
 			
 		}
@@ -111,7 +111,7 @@ function run_quiz(quest){
 }
 
 
-function scoreScreen(nCorrect){
+function score_screen(nCorrect){
 	let text_screen = "";
 	let url_gif = "";
 
@@ -136,19 +136,20 @@ function scoreScreen(nCorrect){
 		url_gif = 'https://media.giphy.com/media/fpXxIjftmkk9y/giphy.gif';
 	}
 
-	var newContent = '<div id="scoreScreen">';
+	var newContent = '<div id="score_screen">';
 	newContent += '<h1 id="score">Correct answers: '+nCorrect+'</h1>';
 	newContent += '<figure id="animation_gif">';
-	newContent += '<img src='+url_gif+'>';
+	newContent += '<img class="feedback_gif" src='+url_gif+'>';
 	newContent += '</figure>';
 	newContent += '<p id="text_score">'+text_screen+'<br></p>';
-	newContent += '<button id="play_again">Play Again</button>';
+	newContent += '<span id="score_buttons"><button id="play_again">Play Again</button>';
+	newContent += '<button id="show_answers">Show Answers</button></span></div>';
 
 
 	document.getElementById('content').innerHTML = newContent;
 
 	$("#play_again").on('click', function(){
-		$('#scoreScreen').empty();
+		$('#score_screen').empty();
 		render_main_menu();
 	});
 }
