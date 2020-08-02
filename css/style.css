@@ -106,6 +106,8 @@ figure img{
 	height: auto;
 	width: auto;
 
+	overflow: auto;
+
 }
 
 #buttons{
@@ -161,14 +163,17 @@ figure img{
 
 #quiz_question{
 	text-align: center;
-	
+	overflow: auto;
+
+	padding-bottom: 40px;
 }
 
 .answer_button{
+	
 	width: 600px;
 	height: 70px;
 
-	font-size: 20px;
+	font-size: 16px;
 	color: black;
 
 	margin: 20px 0px 0px 0px;
@@ -180,7 +185,7 @@ figure img{
 	border-radius: 20px;
 
 	opacity: 94%;
-
+	overflow: auto;
 
 }
 
@@ -393,6 +398,13 @@ figure img{
   100% { transform: rotate(360deg); }
 }
 
+
 @media all and (max-width: 60em){
 	body{ display: block; }
+}
+
+@media only screen and (min-device-width: 360px) and (max-device-width: 992px){
+	.answer_button{
+		width: 320px;
+	}
 }

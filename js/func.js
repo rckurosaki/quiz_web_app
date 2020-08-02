@@ -212,9 +212,9 @@ function calcResults(quest){
 
 
 function render_question_template(theQuestion, options){
-	var newContent = `<div id="back_to_main_menu"><button id="back_button">Back</button><div>`
+	var newContent = `<div id="back_to_main_menu"><button id="back_button">Back Menu</button></div>`
 	newContent += '<div id="quiz_question">';
-	newContent += `<h2 id="question"> ${theQuestion} </h2>`;
+	newContent += `<h2 id="question">${theQuestion}</h2>`;
 	newContent += `<button id="0" class="answer_button">${options[0]}</button><br>`;
 	newContent += `<button id="1" class="answer_button">${options[1]}</button><br>`;
 	newContent += `<button id="2" class="answer_button">${options[2]}</button><br>`;
