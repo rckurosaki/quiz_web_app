@@ -1,11 +1,8 @@
 var nro = 0;
 var array_user_answers = [];
+var global_correct_answers = [];
 
-
-$('.choice').on('click', function(){
-	get_quiz_api($(this).attr('id'));
-	
-});
+render_main_menu();
 
 function get_quiz_api(id){
 	
@@ -84,6 +81,9 @@ function run_quiz(quest){
 		render_question_template(question_title, options);
 	}
 
+	$('#back_button').on('click', function(){
+		reset();
+	});
 
 	$('.answer_button').on('click', function(){
 
@@ -112,8 +112,8 @@ function run_quiz(quest){
 
 
 function scoreScreen(nCorrect){
-	var text_screen = "";
-	var url_gif = "";
+	let text_screen = "";
+	let url_gif = "";
 
 	if(nCorrect === 0){
 		text_screen = "Stupid test!!!";
@@ -149,12 +149,12 @@ function scoreScreen(nCorrect){
 
 	$("#play_again").on('click', function(){
 		$('#scoreScreen').empty();
-		renderMainMenu();
+		render_main_menu();
 	});
 }
 
 
-function renderMainMenu(){
+function render_main_menu(){
 	var newContent = '<div id="buttons">';
 		newContent +='<button id="film" class="choice">';
 		newContent +='<figure class="logos">';
@@ -212,7 +212,8 @@ function calcResults(quest){
 
 
 function render_question_template(theQuestion, options){
-	var newContent = '<div id="quiz_question">';
+	var newContent = `<div id="back_to_main_menu"><button id="back_button">Back</button><div>`
+	newContent += '<div id="quiz_question">';
 	newContent += `<h2 id="question"> ${theQuestion} </h2>`;
 	newContent += `<button id="0" class="answer_button">${options[0]}</button><br>`;
 	newContent += `<button id="1" class="answer_button">${options[1]}</button><br>`;
@@ -235,4 +236,8 @@ function run_loading_animation(){
 
 function remove_loading_animation(){
 	$('.loading_box').empty();
+}
+
+function reset(){
+	window.location.reload(false);
 }

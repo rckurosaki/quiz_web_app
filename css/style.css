@@ -124,7 +124,7 @@ figure img{
 	overflow: auto;
 }
 
-#esquerda{
+#page_left{
 	grid-column: 1;
 	grid-row: 2; 
 	min-width: auto;
@@ -132,7 +132,7 @@ figure img{
 	
 }
 
-#direita{ 
+#page_right{ 
 	grid-column: 3;
 	grid-row: 2; 
 	min-width: 12em;
@@ -237,14 +237,38 @@ figure img{
 }
 
 .choice:active {
-  background-color: #ef233c;
-  border: solid 1px #490310;
+ 	background-color: #ef233c;
+ 	border: solid 1px #490310;
 
-  box-shadow: 0 5px #030a0c;
-  transform: translateY(4px);
-  color: #e0e0e0;
+ 	box-shadow: 0 5px #030a0c;
+ 	transform: translateY(4px);
+  	color: #e0e0e0;
 
-  letter-spacing: 1px;
+  	letter-spacing: 1px;
+}
+
+#back_button{
+	height: 40px;
+	width: 160px;
+
+	background-color: #D4D9E1;
+	border: solid 1px #8D99AE;
+
+	border-radius: 20px;
+
+	background-image: url(../img/back_img.png);
+	background-repeat: no-repeat;
+	background-position: left center;
+
+}
+
+#back_button:hover{
+	background-color: #C00E23;
+  	border: solid 1px #C00E23;
+
+  	color: #e0e0e0;
+  	
+  	letter-spacing: 1px;
 }
 
 /*SCORE SCREEN*/
