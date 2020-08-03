@@ -458,8 +458,8 @@ figure img{
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+	0% { transform: rotate(0deg); }
+ 	100% { transform: rotate(360deg); }
 }
 
 
@@ -473,12 +473,25 @@ figure img{
 	#question{
 		width: 320px;
 
-		margin-left: auto;
-		margin-right: auto;
 	}
 
 	.answer_button{
 		width: 320px;
+
+	}
+
+	#score_screen{
+		display: table;
+		margin: 0 auto;
+	}
+
+	#score_buttons{
+		overflow: auto;
+		width: 360px;
+		display: block;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
 	}
 
 	#play_again{
@@ -490,6 +503,7 @@ figure img{
 	}
 
 	#animation_gif{
+		text-align: center;
 		width: 280px;
 		height: auto;
 	}
@@ -501,8 +515,5 @@ figure img{
 		
 	}
 
-	#score_buttons{
-		display: block;
-	}
 
 }

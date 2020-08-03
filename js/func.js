@@ -142,8 +142,8 @@ function score_screen(nCorrect){
 	newContent += '<img class="feedback_gif" src='+url_gif+'>';
 	newContent += '</figure>';
 	newContent += '<p id="text_score">'+text_screen+'<br></p>';
-	newContent += '<span id="score_buttons"><button id="play_again">Play Again</button>';
-	newContent += '<button id="show_answers">Show Answers</button></span></div>';
+	newContent += '<div id="score_buttons"><button id="play_again">Play Again</button>';
+	newContent += '<button id="show_answers">Show Answers</button></div></div>';
 
 
 	document.getElementById('content').innerHTML = newContent;
